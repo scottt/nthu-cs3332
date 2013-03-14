@@ -11,11 +11,12 @@ number_of_eggs = [
 ];
 u = unique(number_of_eggs);
 printf('(a) '); frequency_table = arrayfun(@(x) sum(number_of_eggs == x), u)
-bar(u, frequency_table); % (b) draw histogram
+bar(u, frequency_table);
 title('Prob 12: Clutch size frequency histogram');
 tics('x', 4:14); axis([3 15]);
 xlabel('clutch size'); ylabel('frequency');
-printf('(b) mode: %f\n', mode(number_of_eggs));
+printf('(b) See plot\n');
+printf('(c) mode: %f\n', mode(number_of_eggs));
 if (OCTAVE_VERSION)
 	print -dpng 12.png; print -dsvg 12.svg;
 endif

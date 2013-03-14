@@ -18,6 +18,11 @@ all: $(PROGRAM_RESULTS) $(PDF_FILES) hw1.pdf
 	octave -q $< | sed '/^$$/d' > $@
 	unix2dos $@
 
+12.txt: 12.m
+	# special post processing for typesetting
+	octave -q $< | sed '/^$$/d' > $@
+	unix2dos $@
+
 %.pdf: %.svg
 	inkscape --export-pdf=$@ $(<)
 
