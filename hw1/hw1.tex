@@ -1,0 +1,45 @@
+\documentclass[a4paper, 8]{article}
+
+\usepackage{fullpage}
+\pagenumbering{gobble}
+\usepackage{graphicx}
+\usepackage[no-math]{fontspec}
+\usepackage{xunicode}
+\usepackage{listings}
+% lstset: showstringspaces: http://tex.stackexchange.com/questions/54183/strange-character-when-using-listings-package
+\lstset{%
+%basicstyle=\small,
+showstringspaces=false,
+linewidth=1.1\textwidth
+}
+
+\begin{document}
+\section*{Problem 9}
+\lstinputlisting[language=Octave,frame=lines,lastline=15]{9.m}
+\lstinputlisting[frame=single]{9.txt}
+\includegraphics[scale=.7]{9.pdf}
+
+\section*{Problem 10}
+\lstinputlisting[language=Octave,frame=lines]{10.m}
+\lstinputlisting[frame=single]{10.txt}
+
+\begin{samepage}
+\section*{Problem 12}
+\lstinputlisting[language=Octave,frame=lines,lastline=18]{12.m}
+\lstinputlisting[frame=single]{12.txt}
+\includegraphics[scale=.7]{12.pdf}
+\end{samepage}
+
+\section*{Problem 13}
+\lstinputlisting[language=Octave,frame=lines,lastline=23]{13.m}
+\lstinputlisting[frame=single]{13.txt}
+\includegraphics[scale=.7]{13.pdf}
+
+\begin{samepage}
+\section*{Problem 14}
+\lstinputlisting[language=Octave,frame=lines,firstline=6,lastline=31]{14.m}
+\lstinputlisting[frame=single]{14.txt}
+\includegraphics[scale=.7]{14.pdf}
+\end{samepage}
+
+\end{document}

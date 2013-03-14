@@ -1,0 +1,12 @@
+hw1/*.png
+hw1/*.svg
+hw1/*.txt
+hw1/9.pdf
+hw1/12.pdf
+hw1/13.pdf
+hw1/14.pdf
+hw1/hw1.pdf
+*.aux
+*.log
+*.swp
+*.swo
