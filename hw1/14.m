@@ -12,7 +12,6 @@ scores = [
 52 83 62 60 61 86 61 70 73 \
 ]';
 printf('(a) '); order_statistics = sort(scores)'
-min_x = min(scores);
 function retval = textbook_quantile(p, order_statistics)
 	quantile_to_rank = @(p, n) (n + 1)*p;
 	n = length(order_statistics);
@@ -29,11 +28,9 @@ x25 = quantile(scores, 0.25, 1, 1); x25_ = textbook_quantile(.25, order_statisti
 m = median(scores);
 x75 = quantile(scores, 0.75, 1, 1); x75_ = textbook_quantile(.75, order_statistics);
 assert(x25 == x25_ && x75 == x75_)
-max_x = max(scores);
-printf('(b) x25:  %.2f, x75:  %.2f, median: %.2f\n', x25, x75, m); % (b)
-summary = sprintf('(c) Five-number summary: %.2f, %.2f, %.2f, %.2f, %.2f',
-	          min_x, x25, m, x75, max_x); % (c)
-printf('%s\n', summary);
+printf('(b) x25:  %.2f, x75:  %.2f, median: %.2f\n', x25, x75, m);
+printf('(c) Five-number summary: %.2f, %.2f, %.2f, %.2f, %.2f\n',
+	          min(scores), x25, m, x75, max(scores));
 printf('(d) See plot\n');
 boxplot(scores, 0, '.', 0);
 axis([20 105 0.5 1.5],'ticx'); tics('x', 20:5:100);
