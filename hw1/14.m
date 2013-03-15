@@ -12,13 +12,23 @@ scores = [
 52 83 62 60 61 86 61 70 73 \
 ]';
 printf('(a) '); order_statistics = sort(scores)'
-% statistics() -> minimum, first quartile, median, third quartile, maximum, mean,
-% standard deviation, skewness, and kurtosis 
-t = statistics(scores);
 min_x = min(scores);
-x25 = quantile(scores, 0.25, 1); % 'percentiles' has multiple reasonable definitions
+function retval = textbook_quantile(p, order_statistics)
+	quantile_to_rank = @(p, n) (n + 1)*p;
+	n = length(order_statistics);
+	k = quantile_to_rank(p, n);
+	r = mod(k, 1);
+	if (r == 0)
+		retval = order_statistics(k);
+	else
+		k = floor(k);
+		retval = (1 - r)*order_statistics(k) + r*order_statistics(k+1);
+	endif
+endfunction
+x25 = quantile(scores, 0.25, 1, 1); x25_ = textbook_quantile(.25, order_statistics);
 m = median(scores);
-x75 = quantile(scores, 0.75, 1); %  hopefully this one matches the textbook
+x75 = quantile(scores, 0.75, 1, 1); x75_ = textbook_quantile(.75, order_statistics);
+assert(x25 == x25_ && x75 == x75_)
 max_x = max(scores);
 printf('(b) x25:  %.2f, x75:  %.2f, median: %.2f\n', x25, x75, m); % (b)
 summary = sprintf('(c) Five-number summary: %.2f, %.2f, %.2f, %.2f, %.2f',
