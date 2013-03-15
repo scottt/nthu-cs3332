@@ -11,7 +11,7 @@ sx2 = var(X); sy2 = var(Y);
 r = corr(X, Y);
 r2 = (X - ux) * (Y - uy)' / (length(X) - 1)/ sqrt(sx2 * sy2);
 % check that our formula for 'r' gets the same answer as the builtin function
-%!test assert((r - r2)/r2 < .001)
+assert((r - r2)/r2 < .001)
 printf('(a) ux: %.2f, uy: %.2f, sx2: %.3f, sy2: %.3f, r: %.3f\n', ux, uy, sx2, sy2, r);
 [P S] = polyfit(X, Y, 1);
 Yh = P(1)*X + P(2);
