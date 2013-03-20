@@ -8,19 +8,19 @@ X = math_and_verbal(:, 1)'; % math scores
 Y = math_and_verbal(:, 2)'; % verbal scores
 ux = mean(X); uy = mean(Y);
 sx2 = var(X); sy2 = var(Y);
-r = corr(X, Y);
+r = corr(X', Y');
 r2 = (X - ux) * (Y - uy)' / (length(X) - 1)/ sqrt(sx2 * sy2);
 % check that our formula for 'r' gets the same answer as the builtin function
 assert((r - r2)/r2 < .001)
-printf('(a) ux: %.2f, uy: %.2f, sx2: %.3f, sy2: %.3f, r: %.3f\n', ux, uy, sx2, sy2, r);
-[P S] = polyfit(X, Y, 1);
+fprintf('(a) ux: %.2f, uy: %.2f, sx2: %.3f, sy2: %.3f, r: %.3f\n', ux, uy, sx2, sy2, r);
+[P, S] = polyfit(X, Y, 1);
 Yh = P(1)*X + P(2);
 plot(X, Y, 'k*', X, Yh, 'g-'); % properties: 'k*', black stars, 'g-': green lines
 title('Prob. 13: Correlation of math and verbal scores');
 xlabel('math'); ylabel('verbal');
 line = sprintf('Y = %f * X + %f', P(1), P(2));
-printf('(b) Best fitting line: %s\n', line);
-printf('(c) See plot\n'); legend('', line);
-if (OCTAVE_VERSION)
+fprintf('(b) Best fitting line: %s\n', line);
+fprintf('(c) See plot\n'); legend('math and verbal scores', line);
+if (exist('OCTAVE_VERSION', 'builtin'))
 	print -dpng 13.png; print -dsvg 13.svg;
-endif
+end

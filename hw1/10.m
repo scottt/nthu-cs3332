@@ -6,5 +6,5 @@ P = arrayfun(Px, X);
 ux = X * P';
 sx2 = arrayfun(@(x) x^2, X) * P';
 varx = sx2 - ux^2;
-printf('(a) gamma: %f (i.e. 60/137)\n(b) ux: %f (i.e. 163/137)\n', gamma, ux);
-printf('(c) varx: %f (i.e. 33300/18769)\n', varx);
+fprintf('(a) gamma: %f (i.e. 60/137)\n(b) ux: %f (i.e. 163/137)\n', gamma, ux);
+fprintf('(c) varx: %f (i.e. 33300/18769)\n', varx);

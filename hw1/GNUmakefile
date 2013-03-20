@@ -1,4 +1,6 @@
 PROGRAMS := $(basename $(wildcard *.m))
+PROGRAMS := $(filter-out textbook_quantile,$(PROGRAMS))
+
 PROGRAM_RESULTS := $(addsuffix .txt, $(PROGRAMS))
 # FIGURES: not all Matlab / Octave code produce plots
 FIGURES := 9 12 13 14
